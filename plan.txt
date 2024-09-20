@@ -1,0 +1,4 @@
+Backend:
+    Python:
+    - need a way for users to input their spotify account credentials to connect to spotify API (most likely will require JSON)
+    - use "SPOTIPY" and Oauth
