@@ -1,4 +1,13 @@
 Backend:
     Python:
     - need a way for users to input their spotify account credentials to connect to spotify API (most likely will require JSON)
+        - actually required Oauth to connect to spotify account
     - use "SPOTIPY" and Oauth
+
+    - Notes:
+        - validating API token should be automated into it's own method
+        - ideally secret key should be a fixed string and then stored somewhere secure
+        - port 5000 has conflict on mac, make sure to use a different port instead, I used port 8000
+        - safari web developers tool, specifically the network tab view is super helpful (shows where the website is facing error and what the error is)
+
+
