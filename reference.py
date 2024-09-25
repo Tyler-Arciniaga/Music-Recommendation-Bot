@@ -27,7 +27,7 @@ redirect_uri = 'http://localhost:8000/callback'
 ## requires a port that isn't 5000 (for some reason this port has some conflict on mac so I used 8000 instead)
 
 #SCOPES FROM SDK AND WEB API MIGHT CAUSE ISSUES IF OCCURRED CONSIDER ONLY USING WEB API AND NOT SDK
-scope = 'playlist-read-private, user-read-currently-playing'
+scope = 'playlist-read-private, user-read-currently-playing, user-library-read'
 
 cache_handler = FlaskSessionCacheHandler(session)
 #creates flask session cache handler and imports the desired session
@@ -40,7 +40,7 @@ spotify_oauth = SpotifyOAuth(
     cache_handler = cache_handler,
     show_dialog= True
 )
-spotify_client = Spotify(auth_manager=spotify_oauth) #creates an instance of the spotify client using out auth manager
+sp = Spotify(auth_manager=spotify_oauth) #creates an instance of the spotify client using out auth manager
 
 
 
@@ -56,7 +56,7 @@ def home():
 def callback():
     spotify_oauth.get_access_token(request.args['code']) #spotify gives us a code
     
-    return redirect(url_for('get_playlists')) 
+    return redirect(url_for('Taylor')) 
     #stores spotify given code and then uses to get and refresh access token
     #what this does is allows users to only have to log in once (will require to login again if scope is changed)
     #also redirects to get_playlists endpoint
@@ -67,11 +67,24 @@ def get_playlists():
         auth_url = spotify_oauth.get_authorize_url() # takes user to "Login with Spotify page" page (done by calling get_authorize_url())
         return redirect(auth_url) #returns that redirect url and therefore redirects user to desired page
 
-    playlists = spotify_client.current_user_playlists() #calls spoitfy api function to get user playlists
+    playlists = sp.current_user_playlists() #calls spoitfy api function to get user playlists
     playlists_info = [(pl['name'], pl['external_urls']['spotify']) for pl in playlists['items']] # creates a list for playlist with playlist being an "item" key
     playlists_html = '<br>'.join([f'{name}: {url}' for name, url in playlists_info])
 
     return playlists_html 
+
+@app.route('/Taylor')
+def get_taylor():
+    taylor_uri = 'spotify:artist:06HL4z0CvFAxyc27GXpf02'
+
+    results = sp.artist_albums(taylor_uri, album_type='album')
+    albums = results['items']
+    while results['next']:
+        results = sp.next(results)
+        albums.extend(results['items'])
+
+    for album in albums:
+        print(album['name'])
 
 @app.route('/logout')
 def logout():
