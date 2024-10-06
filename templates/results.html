@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
+    <title>Based on the Fact that You like {{artist_name}}</title>
 </head>
 <body>
-    <h1>Results Page</h1>
+    <h1>Recommended Tracks</h1>
+    <div>
+        {% for track in tracks %}
+            <p>{{track}}</p>
+        {% endfor %}
+    </div>
     
 </body>
 </html>

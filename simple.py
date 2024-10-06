@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for,render_template_string
 # this imports flask from Flask library and then also imports the session
 # MIGHT NEED TO LOOK INTO IMPORTING REDIRECT AND REQUEST!!!!
 
@@ -39,10 +39,18 @@ def result():
     artist_id = results['artists']['items'][0]['id']  # Get the first artist ID
     seed_artists = [artist_id]  
     recommendations = sp.recommendations(seed_artists=seed_artists)
+
+
+    track_list = []
+    
     
     for track in recommendations['tracks']:
-        return(f"Track: {track['name']} by {', '.join(artist['name'] for artist in track['artists'])}")
+        track_info = (f"Track: {track['name']} by {', '.join(artist['name'] for artist in track['artists'])}")
+        track_list.append(track_info)
 
-   
+    html_content = '<br>'.join(track_list)
+    return render_template("results.html", tracks = track_list, artist_name = artist_name)
+    #return render_template_string("<h1>Track List</h1><p>{}</p>".format(html_content))
+
 if __name__ == "__main__":
     app.run(debug = True, port = 8000);
