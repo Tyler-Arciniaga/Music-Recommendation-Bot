@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, session, request, redirect, url_for
+from flask import Flask, session, request, redirect, url_for, render_template
 # this imports flask from Flask library and then also imports the session
 # MIGHT NEED TO LOOK INTO IMPORTING REDIRECT AND REQUEST!!!!
 
@@ -56,7 +56,7 @@ def home():
 def callback():
     spotify_oauth.get_access_token(request.args['code']) #spotify gives us a code
     
-    return redirect(url_for('Taylor')) 
+    return redirect(url_for('give_track_recs')) 
     #stores spotify given code and then uses to get and refresh access token
     #what this does is allows users to only have to log in once (will require to login again if scope is changed)
     #also redirects to get_playlists endpoint
@@ -73,18 +73,10 @@ def get_playlists():
 
     return playlists_html 
 
-@app.route('/Taylor')
-def get_taylor():
-    taylor_uri = 'spotify:artist:06HL4z0CvFAxyc27GXpf02'
-
-    results = sp.artist_albums(taylor_uri, album_type='album')
-    albums = results['items']
-    while results['next']:
-        results = sp.next(results)
-        albums.extend(results['items'])
-
-    for album in albums:
-        print(album['name'])
+@app.route('/give_track_recs')
+def give_track_recs():
+    return render_template('index.html')
+    
 
 @app.route('/logout')
 def logout():

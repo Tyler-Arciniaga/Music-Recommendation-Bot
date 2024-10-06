@@ -26,31 +26,26 @@ credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secre
 credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
 sp = spotipy.Spotify(client_credentials_manager=credentials_manager)
 
-user_input = input("What's an artist you like?: ")
-
-
-results = sp.search(q=user_input, type='artist')
-artist_id = results['artists']['items'][0]['id']  # Get the first artist ID
-
-# Define seeds
-seed_artists = [artist_id]  # Replace with actual artist IDs
-
-
-# Get recommendations
-recommendations = sp.recommendations(seed_artists=seed_artists)
-
-print("Ok here's some reccomendations based on the fact you like " + user_input)
-
-for track in recommendations['tracks']:
-    print(f"Track: {track['name']} by {', '.join(artist['name'] for artist in track['artists'])}")
-# Print recommended tracks
-
 @app.route("/")
-def track_recs():
-    return "hello"
+def home():
+    user_input = input("What's an artist you like?: ")
 
-    
+
+    results = sp.search(q=user_input, type='artist')
+    artist_id = results['artists']['items'][0]['id']  # Get the first artist ID
+
+    # Define seeds
+    seed_artists = [artist_id]  # Replace with actual artist IDs
+
+
+    # Get recommendations
+    recommendations = sp.recommendations(seed_artists=seed_artists)
+
+    return("Ok here's some reccomendations based on the fact you like " + user_input)
+
+    for track in recommendations['tracks']:
+        return(f"Track: {track['name']} by {', '.join(artist['name'] for artist in track['artists'])}")
+    # Print recommended tracks
 
 if __name__ == "__main__":
-    app.run(debug = True)
-
+    app.run(debug=True, port = 8000)
