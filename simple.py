@@ -35,26 +35,14 @@ def process():
 @app.route('/result')
 def result():
     artist_name = request.args.get('artist_name')
-    
-    return artist_name
-
-
-
-
-'''
     results = sp.search(q=artist_name, type="artist")
     artist_id = results['artists']['items'][0]['id']  # Get the first artist ID
-    
-
     seed_artists = [artist_id]  
     recommendations = sp.recommendations(seed_artists=seed_artists)
     
-'''
+    for track in recommendations['tracks']:
+        return(f"Track: {track['name']} by {', '.join(artist['name'] for artist in track['artists'])}")
 
-
-
-
-
-    
+   
 if __name__ == "__main__":
     app.run(debug = True, port = 8000);
