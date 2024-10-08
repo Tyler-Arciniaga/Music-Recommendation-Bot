@@ -1,13 +1,13 @@
 # Music Reccomendation Bot
 
-Allows users to connect their spotify accounts and then gives reccomendations based on user input (chatting uses NLP)
-
-Front End:
-- Python
-- Django/Flask
-- Spotify API
+Allows users to input an artist's name and then recieve 20 reccomendations based on user input
 
 Backend:
+- Python
+- Flask
+- Spotify for Developers Web API
+    - Spotipy API
+
+Frontend:
 - HTML
-- CSS
-- JS?
+    - Jinja2
