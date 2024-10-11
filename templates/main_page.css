@@ -32,5 +32,24 @@
 
 .photo_marquee{
     overflow: hidden;
-    animation: linear infinite
+    white-space: nowrap;
+    width: 100%;
+}
+
+.marquee_content{
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+}
+
+.artist_photos{
+    display: inline-block;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0); /* Start from the left */
+    }
+    100% {
+        transform: translateX(-50%); /* Move to the left by half of the total width */
+    }
 }
