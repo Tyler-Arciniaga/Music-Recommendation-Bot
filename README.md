@@ -1,6 +1,6 @@
-# Music Reccomendation Bot
+# Music Recommendations Bot
 
-Allows users to input an artist's name and then recieve 20 reccomendations based on user input
+Allows users to input an artist's name and then recieve 20 recommendations based on user input
 
 Backend:
 - Python
