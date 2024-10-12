@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="main_page.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PYO BOT</title>
@@ -15,7 +15,7 @@
         <p>What's an Artist You Like?</p>
     </div>
 
-    <div class = "Submission">
+    <div class = "artist_name">
         <form action="{{ url_for('process') }}" method = "POST" autocomplete="off">
             <input type = "text" name = "artist_name">
             <input type = "submit">
@@ -25,7 +25,7 @@
 
     <div class = "photo_marquee">
         <div class = "marquee_content">
-            <div class = artist_photos>
+            <div class = "artist_photos">
                 <img src = "https://i.redd.it/40xlm8dyvmq71.jpg">
                 <img src = "https://alexnim.com/images/music/sade_4.jpg">
                 <img src = "https://cdns-images.dzcdn.net/images/artist/fe9eb4463ea87452e84ed97e0c86b878/1900x1900-000000-80-0-0.jpg">
@@ -34,7 +34,7 @@
                 <img src = "https://upload.wikimedia.org/wikipedia/commons/0/03/Marvin_Gaye_%281973_publicity_photo%29.jpg">
 
             </div>
-            <div class = artist_photos>
+            <div class = "artist_photos">
                 <img src = "https://i.redd.it/40xlm8dyvmq71.jpg">
                 <img src = "https://alexnim.com/images/music/sade_4.jpg">
                 <img src = "https://cdns-images.dzcdn.net/images/artist/fe9eb4463ea87452e84ed97e0c86b878/1900x1900-000000-80-0-0.jpg">
@@ -49,7 +49,7 @@
 
         
         
-    </div>
+    
 
     
 </body>

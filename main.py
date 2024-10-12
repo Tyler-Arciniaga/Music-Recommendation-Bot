@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 
 from flask import Flask, render_template, request, redirect, url_for,render_template_string
 # this imports flask from Flask library and then also imports the session
@@ -8,9 +9,10 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth, SpotifyClientCredentials
 
 app = Flask(__name__) # creates a flask app and stores in app variable
+load_dotenv()
 
-client_id = 'bffae03a1b6d42feacbc8f458a203362'
-client_secret = 'bb801a548c08470c97fb2cf188d8fe23'
+client_id = os.getenv("client_id")
+client_secret = os.getenv("client_secret")
 
 credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
 
