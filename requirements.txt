@@ -1,2 +1,2 @@
-Flask == 3.0.2 # might need to fix Flask installation (or use a diff version)
+Flask == 3.0.2 
 spotipy == 2.24.0
