@@ -5,16 +5,16 @@ Allows users to input an artist's name and then recieve 20 recommendations based
 ## Instructions
 1. Clone the repository: "git clone https://github.com/Tyler-Arciniaga/Music-Recommendation-Bot"
 2. Create and activate a virtual environment:
-    "python -m venv venv"
-    "venv\Scripts\activate" (WINDOWS)
-    "source venv/bin/activate" (MAC)
-3. Install required dependencies: "pip install -r requirements.txt"
-4. Go to [Spotify Developer Dashboard](https://developer.spotify.com/)
-5. Log in with Spotify account or create a new account
-6. Click on "Create an App"
-7. Fill in required information for app (in this case only the WEB API will be used)
-8. Once your app is created you will see your Client ID and Client Secret in app settings:
-9. After obtaining client credentials create a .env file in root of project directory and follow format:
+3.     "python -m venv venv"
+        "venv\Scripts\activate" (WINDOWS)
+        "source venv/bin/activate" (MAC)
+4. Install required dependencies: "pip install -r requirements.txt"
+5. Go to [Spotify Developer Dashboard](https://developer.spotify.com/)
+6. Log in with Spotify account or create a new account
+7. Click on "Create an App"
+8. Fill in required information for app (in this case only the WEB API will be used)
+9. Once your app is created you will see your Client ID and Client Secret in app settings:
+10. After obtaining client credentials create a .env file in root of project directory and follow format:
     ```python
     client_id = your_client_id_here
     client_secret = your_client_secret_here
