@@ -9,7 +9,7 @@ Allows users to input an artist's name and then recieve 20 recommendations based
     "venv\Scripts\activate" (WINDOWS)
     "source venv/bin/activate" (MAC)
 3. Install required dependencies: "pip install -r requirements.txt"
-4. Go to [Spotify Developer Dashboard]([https://developer.spotify.com/](https://developer.spotify.com/dashboard))
+4. Go to [Spotify Developer Dashboard](https://developer.spotify.com/)
 5. Log in with Spotify account or create a new account
 6. Click on "Create an App"
 7. Fill in required information for app (in this case only the WEB API will be used)
